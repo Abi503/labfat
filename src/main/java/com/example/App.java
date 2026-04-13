@@ -22,3 +22,18 @@ public class Voter {
     public String getVoterId() { return voterId; }
     public boolean isIdValid() { return isIdValid; }
 }
+package com.voting;
+
+public class App {
+    public String checkEligibility(int age, String citizenship, boolean hasValidID) {
+        if (age < 18) return "Ineligible: Underage";
+        if (!citizenship.equalsIgnoreCase("Indian")) return "Ineligible: Not a citizen";
+        if (!hasValidID) return "Ineligible: Invalid ID";
+        return "Eligible to Vote";
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        System.out.println("Status: " + app.checkEligibility(20, "Indian", true));
+    }
+}
